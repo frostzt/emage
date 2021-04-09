@@ -1,0 +1,32 @@
+{
+  "name": "emage",
+  "version": "0.0.1",
+  "description": "An image uploader and with constant updates that might make it much more helpful!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frostzt/emage.git"
+  },
+  "keywords": [
+    "image",
+    "image-uploader",
+    "image-editor",
+    "image-hosting"
+  ],
+  "author": "Sourav Singh Rawat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frostzt/emage/issues"
+  },
+  "homepage": "https://github.com/frostzt/emage#readme",
+  "devDependencies": {
+    "concurrently": "^6.0.1",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
