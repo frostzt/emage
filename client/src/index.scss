@@ -11,15 +11,24 @@ html {
 }
 
 body {
-  font-family: "Londrina Solid", cursive, sans-serif;
+  font-family: "Nunito", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   --background: #e9ecef;
+  --shadow: #1e1e1e11;
+
+  --shade: #f8f9fa;
+  --shade-dark: #efeff0;
+  --shade-light: #fdfdfd;
+
+  --primary-color: #e71d36;
+
+  --default-font-color: #343a40;
 }
 
 body.dark {
-  font-family: "Londrina Solid", cursive, sans-serif;
+  font-family: "Nunito", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
