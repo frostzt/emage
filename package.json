@@ -4,7 +4,8 @@
   "description": "An image uploader and with constant updates that might make it much more helpful!",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client"
   },
   "repository": {
     "type": "git",
