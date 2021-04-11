@@ -1,15 +1,27 @@
 .button {
   height: 2rem;
   display: flex;
-  font-size: 1.4rem;
+  cursor: pointer;
+  font-size: 1.6rem;
   width: fit-content;
-  border-radius: 0.5rem;
   align-items: center;
-  padding: 1.5rem 1.5rem;
+  border-radius: 0.6rem;
+  padding: 1.5rem 2rem;
   justify-content: center;
+  transition: transform 0.3s;
+  backface-visibility: hidden;
   background-color: var(--primary-color);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
 
   &__text {
     color: white;
+    font-weight: 700;
   }
 }
