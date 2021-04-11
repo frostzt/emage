@@ -1,6 +1,6 @@
-const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
+// const sharp = require("sharp")
 
 // Create the express instance
 const app = express();
