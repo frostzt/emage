@@ -25,6 +25,7 @@ const Upload = () => {
         </div>
         <p className="uploadComponent__container--or">or</p>
         <Button style={{ marginTop: "1.5rem" }}>Upload file</Button>
+        <input name="upload-btn" type="file" style={{ display: "none" }} />
       </div>
     </div>
   );
