@@ -4,7 +4,7 @@
   "description": "An image uploader and with constant updates that might make it much more helpful!",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,8 @@
     "nodemon": "^2.0.7"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
   }
 }
