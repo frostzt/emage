@@ -12,6 +12,7 @@ import "./Upload.scss";
 const Upload = () => {
   const [file, setFile] = useState("");
 
+  // Upload the file
   useEffect(() => {
     if (!!file) {
       const formData = new FormData();
