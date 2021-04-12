@@ -9,6 +9,7 @@
     height: 100vh;
     z-index: 9999;
     @include absCenter;
+    backdrop-filter: blur(2rem);
     background-color: var(--backdrop-color);
 
     &--text {

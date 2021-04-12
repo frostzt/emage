@@ -11,15 +11,30 @@ import "./Upload.scss";
 const Upload = () => {
   const [file, setFile] = useState("");
 
+  const validateFileType = (file) => {
+    const validTypes = ["image/jpeg", "image/jpg", "image/png"];
+    console.log(file);
+    if (validTypes.indexOf(file.type) === -1) {
+      return false;
+    }
+    return true;
+  };
+
   const handleFileUpload = (e) => {
     if (e._reactName.toString() === "onChange") {
+      if (!validateFileType(e.target.files[0])) {
+        alert("File is not an image!");
+        return;
+      }
       setFile(e.target.files[0]);
     } else if (e._reactName.toString() === "onDrop") {
+      if (!validateFileType(e.dataTransfer.files[0])) {
+        alert("File is not an image!");
+        return;
+      }
       setFile(e.dataTransfer.files[0]);
     }
   };
-
-  console.log(file);
 
   return (
     <DropImage handleFileUpload={handleFileUpload}>
