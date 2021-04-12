@@ -12,11 +12,17 @@ const Upload = () => {
   const [file, setFile] = useState("");
 
   const handleFileUpload = (e) => {
-    setFile(e.target.files[0]);
+    if (e._reactName.toString() === "onChange") {
+      setFile(e.target.files[0]);
+    } else if (e._reactName.toString() === "onDrop") {
+      setFile(e.dataTransfer.files[0]);
+    }
   };
 
+  console.log(file);
+
   return (
-    <DropImage>
+    <DropImage handleFileUpload={handleFileUpload}>
       <div className="uploadComponent">
         <div className="uploadComponent__container">
           <h2 className="heading-secondary uploadComponent__container--title">

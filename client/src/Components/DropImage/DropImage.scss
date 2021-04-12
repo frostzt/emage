@@ -9,7 +9,7 @@
     height: 100vh;
     z-index: 9999;
     @include absCenter;
-    background-color: #00000080;
+    background-color: var(--backdrop-color);
 
     &--text {
       z-index: 9999;

@@ -1,0 +1,6 @@
+@import "../../global-styles/mixins.scss";
+
+.userAlert {
+  @include absCenter;
+  background-color: var(--backdrop-color);
+}

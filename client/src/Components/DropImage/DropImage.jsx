@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // Style
 import "./DropImage.scss";
 
-const DropImage = (props) => {
+const DropImage = ({ children, handleFileUpload }) => {
   const [isDragging, setIsDragging] = useState(false);
 
   const dragOver = (e) => {
@@ -28,8 +28,7 @@ const DropImage = (props) => {
     e.preventDefault();
     e.stopPropagation();
     setIsDragging(false);
-    const files = e.dataTransfer.files;
-    console.log(files);
+    handleFileUpload(e);
   };
 
   return (
@@ -47,7 +46,7 @@ const DropImage = (props) => {
           </p>
         </div>
       ) : null}
-      {props.children}
+      {children}
     </div>
   );
 };
