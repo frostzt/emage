@@ -11,8 +11,9 @@ import "./Upload.scss";
 
 const Upload = () => {
   const [file, setFile] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
+  const [data, setData] = useState();
 
   // Upload the file
   useEffect(() => {
@@ -25,8 +26,9 @@ const Upload = () => {
 
       axios.post("https://api.imgur.com/3/image", file, config).then(
         (res) => {
+          setData(res.data.data);
           setIsLoading(false);
-          console.log(res);
+          setIsUploaded(true);
         },
         (err) => {
           setIsLoading(false);
@@ -35,6 +37,8 @@ const Upload = () => {
       );
     }
   }, [file]);
+
+  console.log(data);
 
   // Validate file type
   const validateFileType = (file) => {

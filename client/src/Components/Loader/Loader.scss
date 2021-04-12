@@ -1,5 +1,13 @@
 .loader {
+  top: 50%;
+  left: 50%;
+  width: 98%;
+  height: 98%;
+  z-index: 12;
   text-align: center;
+  position: absolute;
+  background-color: var(--shade);
+  transform: translate(-50%, -50%);
 
   &__icon {
     font-size: 15rem;
@@ -10,5 +18,39 @@
   &__text {
     margin-top: 2rem;
     font-size: 2rem;
+  }
+
+  &__rotator {
+    width: 8rem;
+    height: 8rem;
+    z-index: 10;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    background-color: red;
+    animation: circleAround 2s infinite;
+  }
+}
+
+@keyframes circleAround {
+  0% {
+    top: 0%;
+    left: 0%;
+  }
+  25% {
+    top: 0%;
+    left: 98%;
+  }
+  50% {
+    top: 98%;
+    left: 98%;
+  }
+  75% {
+    top: 98%;
+    left: 0%;
+  }
+  100% {
+    top: 0%;
+    left: 0%;
   }
 }
