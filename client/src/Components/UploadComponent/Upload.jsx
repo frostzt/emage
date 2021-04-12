@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FileImageOutlined } from "@ant-design/icons";
 
 // Components
@@ -12,6 +12,29 @@ import "./Upload.scss";
 const Upload = () => {
   const [file, setFile] = useState("");
 
+  useEffect(() => {
+    if (!!file) {
+      const formData = new FormData();
+      formData.append("myFile", file);
+
+      async function sendFile() {
+        const config = {
+          headers: {
+            Authorization: "Client-ID 482011aecb8fad5",
+          },
+        };
+
+        const res = await axios.post(
+          "https://api.imgur.com/3/image",
+          file,
+          config
+        );
+      }
+
+      sendFile();
+    }
+  }, [file]);
+
   // Validate file type
   const validateFileType = (file) => {
     const validTypes = ["image/jpeg", "image/jpg", "image/png"];
@@ -22,7 +45,7 @@ const Upload = () => {
   };
 
   // Handle file upload
-  const handleFileUpload = (e) => {
+  const handleFileUpload = async (e) => {
     if (e._reactName.toString() === "onChange") {
       if (!validateFileType(e.target.files[0])) {
         alert("File is not an image!");
