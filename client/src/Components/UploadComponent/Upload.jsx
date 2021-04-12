@@ -1,38 +1,38 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { FileImageOutlined } from "@ant-design/icons";
 
 // Components
-import Button from "../Button/Button";
+import Loader from "../Loader/Loader";
 import DropImage from "../DropImage/DropImage";
+import ImageUploader from "../ImageUploader/ImageUploader";
 
 // Style
 import "./Upload.scss";
 
 const Upload = () => {
   const [file, setFile] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isUploaded, setIsUploaded] = useState(false);
 
   // Upload the file
   useEffect(() => {
     if (!!file) {
-      const formData = new FormData();
-      formData.append("myFile", file);
+      const config = {
+        headers: {
+          Authorization: "Client-ID 482011aecb8fad5",
+        },
+      };
 
-      async function sendFile() {
-        const config = {
-          headers: {
-            Authorization: "Client-ID 482011aecb8fad5",
-          },
-        };
-
-        const res = await axios.post(
-          "https://api.imgur.com/3/image",
-          file,
-          config
-        );
-      }
-
-      sendFile();
+      axios.post("https://api.imgur.com/3/image", file, config).then(
+        (res) => {
+          setIsLoading(false);
+          console.log(res);
+        },
+        (err) => {
+          setIsLoading(false);
+          console.error(err);
+        }
+      );
     }
   }, [file]);
 
@@ -46,7 +46,7 @@ const Upload = () => {
   };
 
   // Handle file upload
-  const handleFileUpload = async (e) => {
+  const handleFileUpload = (e) => {
     if (e._reactName.toString() === "onChange") {
       if (!validateFileType(e.target.files[0])) {
         alert("File is not an image!");
@@ -60,35 +60,19 @@ const Upload = () => {
       }
       setFile(e.dataTransfer.files[0]);
     }
+    setIsLoading(true); // Change the loading state
   };
 
   return (
     <DropImage handleFileUpload={handleFileUpload}>
       <div className="uploadComponent">
-        <div className="uploadComponent__container">
-          <h2 className="heading-secondary uploadComponent__container--title">
-            Upload your image
-          </h2>
-          <p className="uploadComponent__container--subtitle">
-            Image should be jpeg, png, ...
-          </p>
-          <div className="uploadComponent__container--dnd">
-            <FileImageOutlined className="uploadComponent__container--dnd--icon" />
-            <p className="uploadComponent__container--dnd--text">
-              Drag and drop your image here
-            </p>
-          </div>
-          <p className="uploadComponent__container--or">or</p>
-          <label htmlFor="upload-btn">
-            <Button style={{ marginTop: "1.5rem" }}>Upload file</Button>
-          </label>
-          <input
-            type="file"
-            id="upload-btn"
-            onChange={(e) => handleFileUpload(e)}
-            style={{ display: "none" }}
-          />
-        </div>
+        {isLoading ? (
+          <Loader />
+        ) : isUploaded ? (
+          "Done..."
+        ) : (
+          <ImageUploader handleFileUpload={handleFileUpload} />
+        )}
       </div>
     </DropImage>
   );
