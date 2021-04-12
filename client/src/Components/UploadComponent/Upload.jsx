@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FileImageOutlined } from "@ant-design/icons";
 
 // Components
@@ -8,6 +8,12 @@ import Button from "../Button/Button";
 import "./Upload.scss";
 
 const Upload = () => {
+  const [file, setFile] = useState("");
+
+  const handleFileUpload = (e) => {
+    setFile(e.target.files[0]);
+  };
+
   return (
     <div className="uploadComponent">
       <div className="uploadComponent__container">
@@ -24,8 +30,15 @@ const Upload = () => {
           </p>
         </div>
         <p className="uploadComponent__container--or">or</p>
-        <Button style={{ marginTop: "1.5rem" }}>Upload file</Button>
-        <input name="upload-btn" type="file" style={{ display: "none" }} />
+        <label htmlFor="upload-btn">
+          <Button style={{ marginTop: "1.5rem" }}>Upload file</Button>
+        </label>
+        <input
+          type="file"
+          id="upload-btn"
+          onChange={(e) => handleFileUpload(e)}
+          style={{ display: "none" }}
+        />
       </div>
     </div>
   );
