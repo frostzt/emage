@@ -1,0 +1,23 @@
+@import "../../global-styles/mixins.scss";
+
+.dropimage {
+  height: 100vh;
+  width: 100vw;
+
+  &__draggingContainer {
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    @include absCenter;
+    background-color: #00000080;
+
+    &--text {
+      z-index: 9999;
+      font-size: 10rem;
+      color: #ffffff;
+      font-weight: 700;
+      @include absCenter;
+      text-transform: uppercase;
+    }
+  }
+}
