@@ -11,7 +11,7 @@ import "./Upload.scss";
 
 const Upload = () => {
   const [file, setFile] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isUploaded, setIsUploaded] = useState(false);
 
   // Upload the file
