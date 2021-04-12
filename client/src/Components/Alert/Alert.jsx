@@ -1,5 +1,8 @@
 import React from "react";
 
+// Style
+import "./Alert.scss";
+
 export const ErrorAlert = () => {
   return (
     <div className="userAlert">

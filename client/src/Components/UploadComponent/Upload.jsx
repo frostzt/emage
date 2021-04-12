@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { FileImageOutlined } from "@ant-design/icons";
 
@@ -11,15 +12,16 @@ import "./Upload.scss";
 const Upload = () => {
   const [file, setFile] = useState("");
 
+  // Validate file type
   const validateFileType = (file) => {
     const validTypes = ["image/jpeg", "image/jpg", "image/png"];
-    console.log(file);
     if (validTypes.indexOf(file.type) === -1) {
       return false;
     }
     return true;
   };
 
+  // Handle file upload
   const handleFileUpload = (e) => {
     if (e._reactName.toString() === "onChange") {
       if (!validateFileType(e.target.files[0])) {

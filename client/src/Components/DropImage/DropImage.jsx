@@ -9,7 +9,6 @@ const DropImage = ({ children, handleFileUpload }) => {
   const dragOver = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsDragging(true);
   };
 
   const dragEnter = (e) => {
