@@ -1,0 +1,55 @@
+.imageViewer {
+  &__icon {
+    font-size: 5rem;
+    margin-top: 3rem;
+    color: var(--success);
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin-top: 1rem;
+    font-weight: 400;
+  }
+
+  &__input {
+    margin-top: 1rem;
+    position: relative;
+
+    &--btn {
+      top: 50%;
+      right: 12%;
+      position: absolute;
+      transform: translateY(-50%);
+
+      &:hover {
+        transform: translateY(-50%) scale(1.1) !important;
+      }
+
+      &:active {
+        transform: translateY(-50%) scale(0.9) !important;
+      }
+    }
+
+    &--link {
+      width: 80%;
+      height: 4rem;
+      border-radius: 1rem;
+      text-align: center;
+      border: 0.5px solid var(--border-color);
+    }
+  }
+
+  &__container {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-top: 2rem;
+    border-radius: 2rem;
+
+    &--image {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}

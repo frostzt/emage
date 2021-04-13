@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 // Components
 import Loader from "../Loader/Loader";
 import DropImage from "../DropImage/DropImage";
+import ImageViewer from "../ImageViewer/ImageViewer";
 import ImageUploader from "../ImageUploader/ImageUploader";
 
 // Style
@@ -38,8 +39,6 @@ const Upload = () => {
     }
   }, [file]);
 
-  console.log(data);
-
   // Validate file type
   const validateFileType = (file) => {
     const validTypes = ["image/jpeg", "image/jpg", "image/png"];
@@ -73,7 +72,7 @@ const Upload = () => {
         {isLoading ? (
           <Loader />
         ) : isUploaded ? (
-          "Done..."
+          <ImageViewer data={data} />
         ) : (
           <ImageUploader handleFileUpload={handleFileUpload} />
         )}
