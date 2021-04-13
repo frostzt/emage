@@ -11,10 +11,11 @@ import ImageUploader from "../ImageUploader/ImageUploader";
 import "./Upload.scss";
 
 const Upload = () => {
+  const [data, setData] = useState();
   const [file, setFile] = useState("");
+  const [isEmage, setIsEmage] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
-  const [data, setData] = useState();
 
   // Upload the file
   useEffect(() => {
