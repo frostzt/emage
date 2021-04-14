@@ -1,6 +1,7 @@
 // Core modules
 const multer = require("multer");
 const sharp = require("sharp");
+const uuid = require("uuid");
 
 const CreateError = require("../utils/CreateError");
 
@@ -26,10 +27,17 @@ const upload = multer({
 exports.uploadImage = upload.fields([{ name: "image", maxCount: 1 }]);
 
 // Resize the images and save the buffer
-exports.resizeImage = (req, res, next) => {
+exports.manipulateIamge = async (req, res, next) => {
   try {
     if (!req.files.image) return next();
-    const { format, quality } = req.body;
+    const { format, quality, width, height } = req.body; // Format and quality of the image to be the output
+
+    req.body.image = `${uuid.v4()}.${format}`; // Create the image name
+
+    // Create the image and save it
+    await sharp(req.files.image[0].buffer)
+      .resize(width, height)
+      .toFormat(`${format}`);
   } catch (error) {}
   return res.send("Works");
 };

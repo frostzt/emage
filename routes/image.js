@@ -5,6 +5,10 @@ const imageController = require("../controllers/imageController");
 const router = express.Router();
 
 // Transform Image and upload it
-router.post("/image", imageController.uploadImage, imageController.resizeImage);
+router.post(
+  "/image",
+  imageController.uploadImage,
+  imageController.manipulateIamge
+);
 
 module.exports = router;
