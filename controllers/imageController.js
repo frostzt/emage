@@ -27,17 +27,34 @@ const upload = multer({
 exports.uploadImage = upload.fields([{ name: "image", maxCount: 1 }]);
 
 // Resize the images and save the buffer
-exports.manipulateIamge = async (req, res, next) => {
+exports.manipulateImage = async (req, res, next) => {
   try {
     if (!req.files.image) return next();
     const { format, quality, width, height } = req.body; // Format and quality of the image to be the output
 
     req.body.image = `${uuid.v4()}.${format}`; // Create the image name
 
-    // Create the image and save it
-    await sharp(req.files.image[0].buffer)
-      .resize(width, height)
-      .toFormat(`${format}`);
-  } catch (error) {}
-  return res.send("Works");
+    // Create the image and save it as jpeg or png
+    if (format === "jpeg") {
+      await sharp(req.files.image[0].buffer)
+        .resize(width, height)
+        .toFormat("jpeg")
+        .jpeg({ quality: quality })
+        .toFile(`./public/images/${req.body.image}`);
+    }
+    if (format === "png") {
+      await sharp(req.files.image[0].buffer)
+        .resize(width, height)
+        .toFormat("png")
+        .png({ quality: quality })
+        .toFile(`./public/images/${req.body.image}`);
+    }
+    return res.status(200);
+  } catch (error) {
+    return new CreateError(
+      "There was some error in processing the image, please try again!",
+      500
+    );
+  }
+  next();
 };

@@ -8,7 +8,7 @@ const router = express.Router();
 router.post(
   "/image",
   imageController.uploadImage,
-  imageController.manipulateIamge
+  imageController.manipulateImage
 );
 
 module.exports = router;
