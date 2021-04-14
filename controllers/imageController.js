@@ -35,18 +35,18 @@ exports.manipulateImage = async (req, res, next) => {
     req.body.image = `${uuid.v4()}.${format}`; // Create the image name
 
     // Create the image and save it as jpeg or png
-    if (format === "jpeg") {
+    if (format == "jpeg" || format == "jpg") {
       await sharp(req.files.image[0].buffer)
-        .resize(width, height)
+        .resize(+width, +height)
         .toFormat("jpeg")
-        .jpeg({ quality: quality })
+        .jpeg({ quality: +quality })
         .toFile(`./public/images/${req.body.image}`);
     }
-    if (format === "png") {
+    if (format == "png") {
       await sharp(req.files.image[0].buffer)
-        .resize(width, height)
+        .resize(+width, +height)
         .toFormat("png")
-        .png({ quality: quality })
+        .png({ quality: +quality })
         .toFile(`./public/images/${req.body.image}`);
     }
     return res.status(200);
@@ -56,5 +56,4 @@ exports.manipulateImage = async (req, res, next) => {
       500
     );
   }
-  next();
 };
