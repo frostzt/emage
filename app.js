@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // Routes
-app.use("/", imageRoute);
+app.use("/api/v1/", imageRoute);
 
 // Body parser
 app.use(express.json({ limit: "10kb" }));
