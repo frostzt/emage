@@ -7,6 +7,9 @@ const helmet = require("helmet");
 const express = require("express");
 const compression = require("compression");
 
+// Other modules
+const imageRoute = require("./routes/image");
+
 // Create the express instance
 const app = express();
 
@@ -37,6 +40,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // Routes
+app.use("/", imageRoute);
 
 // Body parser
 app.use(express.json({ limit: "10kb" }));
