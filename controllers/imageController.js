@@ -2,6 +2,8 @@
 const multer = require("multer");
 const sharp = require("sharp");
 
+const CreateError = require("../utils/CreateError");
+
 // Setup multer and file uploads
 const multerStorage = multer.memoryStorage();
 
@@ -10,7 +12,7 @@ const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith("image")) {
     cb(null, true);
   } else {
-    cb(new Error("The file provided was not an image!"), false);
+    cb(new CreateError("The file provided is not an image!", 400), false);
   }
 };
 
@@ -27,7 +29,7 @@ exports.uploadImage = upload.fields([{ name: "image", maxCount: 1 }]);
 exports.resizeImage = (req, res, next) => {
   try {
     if (!req.files.image) return next();
-    console.log(req.body);
+    const { format, quality } = req.body;
   } catch (error) {}
   return res.send("Works");
 };
