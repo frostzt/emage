@@ -49,7 +49,8 @@ exports.manipulateImage = async (req, res, next) => {
         .png({ quality: +quality })
         .toFile(`./public/images/${req.body.image}`);
     }
-    return res.status(200);
+
+    return res.status(200).json({ status: "Done" });
   } catch (error) {
     return new CreateError(
       "There was some error in processing the image, please try again!",

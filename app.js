@@ -1,4 +1,5 @@
 // Core modules
+const path = require("path");
 const cors = require("cors");
 const sharp = require("sharp");
 const morgan = require("morgan");
@@ -15,6 +16,9 @@ const app = express();
 
 // Implement CORS
 app.use(cors());
+
+// Serve static resources
+app.use(express.static(path.join(__dirname, "public")));
 
 // Implement security headers
 app.use(helmet());
