@@ -1,7 +1,7 @@
 // Core modules
-const multer = require("multer");
 const sharp = require("sharp");
-const uuid = require("uuid");
+const multer = require("multer");
+const { nanoid } = require("nanoid");
 
 const CreateError = require("../utils/CreateError");
 
@@ -32,7 +32,7 @@ exports.manipulateImage = async (req, res, next) => {
     if (!req.files.image) return next();
     const { format, quality, width, height } = req.body; // Format and quality of the image to be the output
 
-    req.body.image = `${uuid.v4()}.${format}`; // Create the image name
+    req.body.image = `${nanoid(12)}.${format}`; // Create the image name
 
     // Create the image and save it as jpeg or png
     if (format == "jpeg" || format == "jpg") {
@@ -50,7 +50,7 @@ exports.manipulateImage = async (req, res, next) => {
         .toFile(`./public/images/${req.body.image}`);
     }
 
-    return res.status(200).json({ status: "Done" });
+    return res.status(200).json({ status: "Done", link: "https://emage.com" });
   } catch (error) {
     return new CreateError(
       "There was some error in processing the image, please try again!",

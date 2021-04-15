@@ -13,30 +13,60 @@ import "./Upload.scss";
 const Upload = () => {
   const [data, setData] = useState();
   const [file, setFile] = useState("");
-  const [isEmage, setIsEmage] = useState(false);
+  const [isEmage, setIsEmage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
 
   // Upload the file
   useEffect(() => {
     if (!!file) {
-      const config = {
-        headers: {
-          Authorization: "Client-ID 482011aecb8fad5",
-        },
-      };
+      if (!isEmage) {
+        const config = {
+          headers: {
+            Authorization: "Client-ID 482011aecb8fad5",
+          },
+        };
 
-      axios.post("https://api.imgur.com/3/image", file, config).then(
-        (res) => {
-          setData(res.data.data);
-          setIsLoading(false);
-          setIsUploaded(true);
-        },
-        (err) => {
-          setIsLoading(false);
-          console.error(err);
-        }
-      );
+        axios.post("https://api.imgur.com/3/image", file, config).then(
+          (res) => {
+            setData(res.data.data);
+            setIsLoading(false);
+            setIsUploaded(true);
+          },
+          (err) => {
+            setIsLoading(false);
+            console.error(err);
+          }
+        );
+      } else {
+        const formData = new FormData();
+
+        const config = {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        };
+
+        // Append all the needed properties
+        formData.append("image", file);
+        formData.append("format", "jpeg");
+        formData.append("quality", 100);
+        formData.append("width", 1000);
+        formData.append("height", 1000);
+
+        axios.post("http://localhost:5000/api/v1/image", formData, config).then(
+          (res) => {
+            console.log(res);
+            setData(res.data);
+            setIsLoading(false);
+            setIsUploaded(true);
+          },
+          (err) => {
+            setIsLoading(false);
+            console.error(err);
+          }
+        );
+      }
     }
   }, [file]);
 
