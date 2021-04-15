@@ -7,7 +7,7 @@ import Button from "../Button/Button";
 // Style
 import "./ImageUploader.scss";
 
-const ImageUploader = ({ handleFileUpload, setIsEmage }) => {
+const ImageUploader = ({ handleFileUpload, handleSwitchAPI, isEmage }) => {
   return (
     <Fragment>
       <div className="uploadComponent__container">
@@ -19,12 +19,18 @@ const ImageUploader = ({ handleFileUpload, setIsEmage }) => {
         </h3>
         <div className="uploadComponent__container--choose">
           <div
-            className={`choose-api uploadComponent__container--choose--emage`}
+            className={`choose-api uploadComponent__container--choose--emage ${
+              isEmage ? "selected" : ""
+            }`}
+            onClick={handleSwitchAPI}
           >
             Emage
           </div>
           <div
-            className={`choose-api uploadComponent__container--choose--imgur`}
+            className={`choose-api uploadComponent__container--choose--imgur ${
+              !isEmage ? "selected" : ""
+            }`}
+            onClick={handleSwitchAPI}
           >
             Imgur
           </div>

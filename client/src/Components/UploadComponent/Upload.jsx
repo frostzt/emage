@@ -70,6 +70,11 @@ const Upload = () => {
     }
   }, [file]);
 
+  // Handle switching the API
+  const handleSwitchAPI = () => {
+    return setIsEmage((prevState) => !prevState);
+  };
+
   // Validate file type
   const validateFileType = (file) => {
     const validTypes = ["image/jpeg", "image/jpg", "image/png"];
@@ -106,8 +111,8 @@ const Upload = () => {
           <ImageViewer data={data} />
         ) : (
           <ImageUploader
-            setIsEmage={setIsEmage}
             isEmage={isEmage}
+            handleSwitchAPI={handleSwitchAPI}
             handleFileUpload={handleFileUpload}
           />
         )}
