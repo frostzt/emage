@@ -17,6 +17,12 @@ const Upload = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
 
+  // Properties of the image controlled by Properties-Component
+  const [width, setWidth] = useState();
+  const [height, setHeight] = useState();
+  const [quality, setQuality] = useState(80);
+  const [format, setFormat] = useState("jpeg");
+
   // Upload the file
   useEffect(() => {
     if (!!file) {
@@ -50,10 +56,10 @@ const Upload = () => {
 
         // Append all the needed properties
         formData.append("image", file);
-        formData.append("format", "jpeg");
-        formData.append("quality", 100);
-        formData.append("width", "default");
-        formData.append("height", "default");
+        formData.append("format", format);
+        formData.append("quality", quality);
+        formData.append("width", width ? width : "default");
+        formData.append("height", height ? height : "default");
 
         // To the API
         axios.post("http://localhost:5000/api/v1/image", formData, config).then(
