@@ -51,8 +51,8 @@ const Upload = () => {
         formData.append("image", file);
         formData.append("format", "jpeg");
         formData.append("quality", 100);
-        formData.append("width", 1000);
-        formData.append("height", 1000);
+        formData.append("width", "default");
+        formData.append("height", "default");
 
         axios.post("http://localhost:5000/api/v1/image", formData, config).then(
           (res) => {
@@ -68,7 +68,7 @@ const Upload = () => {
         );
       }
     }
-  }, [file]);
+  }, [file, isEmage]);
 
   // Handle switching the API
   const handleSwitchAPI = () => {

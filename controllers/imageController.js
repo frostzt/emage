@@ -1,6 +1,7 @@
 // Core modules
 const sharp = require("sharp");
 const multer = require("multer");
+const sizeOf = require("image-size");
 const { nanoid } = require("nanoid");
 
 const CreateError = require("../utils/CreateError");
@@ -30,9 +31,19 @@ exports.uploadImage = upload.fields([{ name: "image", maxCount: 1 }]);
 exports.manipulateImage = async (req, res, next) => {
   try {
     if (!req.files.image) return next();
-    const { format, quality, width, height } = req.body; // Format and quality of the image to be the output
 
-    req.body.image = `${nanoid(12)}.${format}`; // Create the image name
+    const { format, quality } = req.body; // Format and quality of the image to be the output
+    let { width, height } = req.body; // Get the height and width of the image only if specified by the user
+
+    // Get the dimensions of the image and set if provided default
+    if (width === "default" || height === "default") {
+      const dimensions = sizeOf(req.files.image[0].buffer);
+      width = width === "default" ? dimensions.width : width;
+      height = height === "default" ? dimensions.height : height;
+    }
+
+    // Create the image name
+    req.body.image = `${nanoid(12)}.${format}`;
 
     // Create the image and save it as jpeg or png
     if (format == "jpeg" || format == "jpg") {
