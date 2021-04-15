@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { FileImageOutlined } from "@ant-design/icons";
 
 // Components
@@ -7,13 +7,28 @@ import Button from "../Button/Button";
 // Style
 import "./ImageUploader.scss";
 
-const ImageUploader = ({ handleFileUpload }) => {
+const ImageUploader = ({ handleFileUpload, setIsEmage }) => {
   return (
-    <>
+    <Fragment>
       <div className="uploadComponent__container">
         <h2 className="heading-secondary uploadComponent__container--title">
           Upload your image
         </h2>
+        <h3 className="heading-tertiary uploadComponent__container--api">
+          Where to upload?
+        </h3>
+        <div className="uploadComponent__container--choose">
+          <div
+            className={`choose-api uploadComponent__container--choose--emage`}
+          >
+            Emage
+          </div>
+          <div
+            className={`choose-api uploadComponent__container--choose--imgur`}
+          >
+            Imgur
+          </div>
+        </div>
         <p className="uploadComponent__container--subtitle">
           Image should be jpeg, png, ...
         </p>
@@ -25,7 +40,9 @@ const ImageUploader = ({ handleFileUpload }) => {
         </div>
         <p className="uploadComponent__container--or">or</p>
         <label htmlFor="upload-btn">
-          <Button style={{ marginTop: "1.5rem" }}>Upload file</Button>
+          <Button style={{ marginTop: "1.5rem", marginBottom: "3rem" }}>
+            Upload file
+          </Button>
         </label>
         <input
           type="file"
@@ -34,7 +51,7 @@ const ImageUploader = ({ handleFileUpload }) => {
           style={{ display: "none" }}
         />
       </div>
-    </>
+    </Fragment>
   );
 };
 

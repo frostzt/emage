@@ -1,8 +1,8 @@
 @import "../../global-styles/mixins";
 
 .uploadComponent {
-  width: 50vh;
-  height: 50vh;
+  width: 40vw;
+  height: 60vh;
   @include absCenter;
   text-align: center;
   border-radius: 1rem;

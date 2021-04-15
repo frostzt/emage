@@ -13,7 +13,7 @@ import "./Upload.scss";
 const Upload = () => {
   const [data, setData] = useState();
   const [file, setFile] = useState("");
-  const [isEmage, setIsEmage] = useState(true);
+  const [isEmage, setIsEmage] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
 
@@ -105,7 +105,11 @@ const Upload = () => {
         ) : isUploaded ? (
           <ImageViewer data={data} />
         ) : (
-          <ImageUploader handleFileUpload={handleFileUpload} />
+          <ImageUploader
+            setIsEmage={setIsEmage}
+            isEmage={isEmage}
+            handleFileUpload={handleFileUpload}
+          />
         )}
       </div>
     </DropImage>
