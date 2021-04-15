@@ -27,6 +27,7 @@ const Upload = () => {
           },
         };
 
+        // To the API
         axios.post("https://api.imgur.com/3/image", file, config).then(
           (res) => {
             setData(res.data.data);
@@ -54,9 +55,9 @@ const Upload = () => {
         formData.append("width", "default");
         formData.append("height", "default");
 
+        // To the API
         axios.post("http://localhost:5000/api/v1/image", formData, config).then(
           (res) => {
-            console.log(res);
             setData(res.data);
             setIsLoading(false);
             setIsUploaded(true);
