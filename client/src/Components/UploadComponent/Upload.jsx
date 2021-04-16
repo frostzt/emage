@@ -14,7 +14,7 @@ import "./Upload.scss";
 const Upload = () => {
   const [data, setData] = useState();
   const [file, setFile] = useState("");
-  const [isEmage, setIsEmage] = useState(true);
+  const [isEmage, setIsEmage] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
 
@@ -79,6 +79,24 @@ const Upload = () => {
     // eslint-disable-next-line
   }, [file, isEmage]);
 
+  // Reset everything
+  const reset = () => {
+    // Reset application
+    setFile(() => "");
+    setData(() => null);
+    setIsEmage(() => false);
+    setIsLoading(() => false);
+    setIsUploaded(() => false);
+
+    // Reset properties
+    setWidth(() => "");
+    setHeight(() => "");
+    setQuality(() => 80);
+    setFormat(() => "jpeg");
+
+    return;
+  };
+
   // Handle changing the properties state
   const handleHeightChange = (e) => {
     return setHeight(() => e.target.value);
@@ -134,7 +152,7 @@ const Upload = () => {
         {isLoading ? (
           <Loader />
         ) : isUploaded ? (
-          <ImageViewer data={data} />
+          <ImageViewer reset={reset} data={data} />
         ) : (
           <Fragment>
             <ImageUploader

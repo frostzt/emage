@@ -7,7 +7,7 @@ import "./ImageViewer.scss";
 // Components
 import Button from "../Button/Button";
 
-const ImageViewer = ({ data }) => {
+const ImageViewer = ({ data, reset }) => {
   return (
     <div className="imageViewer">
       <CheckCircleFilled className="imageViewer__icon" />
@@ -30,6 +30,9 @@ const ImageViewer = ({ data }) => {
         />
         <Button classes="imageViewer__input--btn">Copy</Button>
       </div>
+      <Button onClick={reset} classes="imageViewer__reset">
+        Upload another image!
+      </Button>
     </div>
   );
 };
