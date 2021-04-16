@@ -4,6 +4,7 @@
   "description": "An image uploader and with constant updates that might make it much more helpful!",
   "main": "server.js",
   "scripts": {
+    "start": "node server",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
