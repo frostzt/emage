@@ -63,7 +63,7 @@ const Upload = () => {
         formData.append("height", height ? height : "default");
 
         // To the API
-        axios.post("http://localhost:5000/api/v1/image", formData, config).then(
+        axios.post("/api/v1/image", formData, config).then(
           (res) => {
             setData(res.data);
             setIsLoading(false);
