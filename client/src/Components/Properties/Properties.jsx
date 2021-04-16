@@ -40,15 +40,27 @@ const Properties = ({
             Quality:
           </p>
           <input
-            value={quality}
-            type="number"
-            max={100}
             min={0}
+            max={100}
+            type="number"
+            value={quality}
             onChange={handleQualityChange}
             className="propertiesMenu__content--qualityControl-value"
           />
         </div>
-        <div className="propertiesMenu__content--formatControl"></div>
+        <div className="propertiesMenu__content--formatControl">
+          <p className="propertiesMenu__content--formatControl-title">
+            Format:
+          </p>
+          <select
+            value={format}
+            onChange={handleFormatChange}
+            className="propertiesMenu__content--formatControl-select"
+          >
+            <option value="jpeg">jpeg</option>
+            <option value="png">png</option>
+          </select>
+        </div>
       </div>
     </div>
   );

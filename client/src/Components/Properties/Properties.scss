@@ -38,10 +38,31 @@
 
     &--qualityControl {
       display: flex;
+      margin-bottom: 1rem;
       justify-content: space-around;
 
       &-title {
         font-size: 1.4rem;
+      }
+
+      &-value {
+        flex: 1;
+        margin-left: 4rem;
+      }
+    }
+
+    &--formatControl {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 2rem;
+
+      &-title {
+        font-size: 1.4rem;
+      }
+
+      &-select {
+        flex: 1;
+        margin-left: 4rem;
       }
     }
   }

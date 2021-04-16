@@ -76,6 +76,7 @@ const Upload = () => {
         );
       }
     }
+    // eslint-disable-next-line
   }, [file, isEmage]);
 
   // Handle changing the properties state
