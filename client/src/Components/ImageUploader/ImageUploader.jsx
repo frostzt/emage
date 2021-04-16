@@ -58,7 +58,6 @@ const ImageUploader = ({ handleFileUpload, handleSwitchAPI, isEmage }) => {
           style={{ display: "none" }}
         />
       </div>
-      <Properties />
     </Fragment>
   );
 };

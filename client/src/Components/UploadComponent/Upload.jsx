@@ -1,11 +1,12 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 
 // Components
 import Loader from "../Loader/Loader";
 import DropImage from "../DropImage/DropImage";
 import ImageViewer from "../ImageViewer/ImageViewer";
 import ImageUploader from "../ImageUploader/ImageUploader";
+import Properties from "../Properties/Properties";
 
 // Style
 import "./Upload.scss";
@@ -13,7 +14,7 @@ import "./Upload.scss";
 const Upload = () => {
   const [data, setData] = useState();
   const [file, setFile] = useState("");
-  const [isEmage, setIsEmage] = useState(false);
+  const [isEmage, setIsEmage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
 
@@ -111,17 +112,32 @@ const Upload = () => {
 
   return (
     <DropImage handleFileUpload={handleFileUpload}>
-      <div className="uploadComponent">
+      <div className={`uploadComponent ${isLoading ? "overflow-hidden" : ""}`}>
         {isLoading ? (
           <Loader />
         ) : isUploaded ? (
           <ImageViewer data={data} />
         ) : (
-          <ImageUploader
-            isEmage={isEmage}
-            handleSwitchAPI={handleSwitchAPI}
-            handleFileUpload={handleFileUpload}
-          />
+          <Fragment>
+            <ImageUploader
+              isEmage={isEmage}
+              handleSwitchAPI={handleSwitchAPI}
+              handleFileUpload={handleFileUpload}
+            />
+            {isEmage ? (
+              <Properties
+                style={{
+                  position: "absolute",
+                  top: "5%",
+                  left: "100%",
+                }}
+                setWidth={setWidth}
+                setFormat={setFormat}
+                setHeight={setHeight}
+                setQuality={setQuality}
+              />
+            ) : null}
+          </Fragment>
         )}
       </div>
     </DropImage>

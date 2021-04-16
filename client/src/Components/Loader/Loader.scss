@@ -34,11 +34,11 @@
 
 @keyframes circleAround {
   0% {
-    top: 0%;
+    top: -5%;
     left: 0%;
   }
   25% {
-    top: 0%;
+    top: -5%;
     left: 98%;
   }
   50% {
@@ -47,10 +47,10 @@
   }
   75% {
     top: 98%;
-    left: 0%;
+    left: -5%;
   }
   100% {
-    top: 0%;
-    left: 0%;
+    top: -5%;
+    left: -5%;
   }
 }
