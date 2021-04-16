@@ -3,7 +3,13 @@ import React from "react";
 // Style
 import "./Properties.scss";
 
-const Properties = ({ style }) => {
+const Properties = ({
+  style,
+  handleHeightChange,
+  handleWidthChange,
+  handleQualityChange,
+  handleFormatChange,
+}) => {
   return (
     <div className="propertiesMenu" style={style}>
       <div className="propertiesMenu__content">

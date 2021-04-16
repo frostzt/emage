@@ -78,6 +78,23 @@ const Upload = () => {
     }
   }, [file, isEmage]);
 
+  // Handle changing the properties state
+  const handleHeightChange = (value) => {
+    return setHeight(() => value);
+  };
+
+  const handleWidthChange = (value) => {
+    return setWidth(() => value);
+  };
+
+  const handleFormatChange = (value) => {
+    return setFormat(() => value);
+  };
+
+  const handleQualityChange = (value) => {
+    return setQuality(() => value);
+  };
+
   // Handle switching the API
   const handleSwitchAPI = () => {
     return setIsEmage((prevState) => !prevState);
@@ -129,12 +146,12 @@ const Upload = () => {
                 style={{
                   position: "absolute",
                   top: "5%",
-                  left: "100%",
+                  left: "105%",
                 }}
-                setWidth={setWidth}
-                setFormat={setFormat}
-                setHeight={setHeight}
-                setQuality={setQuality}
+                setWidth={handleWidthChange}
+                setFormat={handleFormatChange}
+                setHeight={handleHeightChange}
+                setQuality={handleQualityChange}
               />
             ) : null}
           </Fragment>

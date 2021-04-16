@@ -3,5 +3,21 @@
   z-index: 0;
   height: auto;
   border-radius: 0.5rem;
-  background-color: var(--shade-dark);
+  background-color: var(--shade-light);
+
+  &__content {
+    text-align: center;
+
+    &--title {
+      font-size: 2rem;
+      font-weight: 400;
+      margin-top: 1rem;
+    }
+
+    &--desc {
+      font-weight: 300;
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+    }
+  }
 }
