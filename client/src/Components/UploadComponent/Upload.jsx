@@ -58,7 +58,7 @@ const Upload = () => {
         // Append all the needed properties
         formData.append("image", file);
         formData.append("format", format);
-        formData.append("quality", quality);
+        formData.append("quality", quality > 100 || quality < 0 ? 80 : quality);
         formData.append("width", width ? width : "default");
         formData.append("height", height ? height : "default");
 
@@ -148,6 +148,8 @@ const Upload = () => {
                   top: "5%",
                   left: "105%",
                 }}
+                quality={quality}
+                format={format}
                 handleWidthChange={handleWidthChange}
                 handleFormatChange={handleFormatChange}
                 handleHeightChange={handleHeightChange}

@@ -5,6 +5,8 @@ import "./Properties.scss";
 
 const Properties = ({
   style,
+  quality,
+  format,
   handleHeightChange,
   handleWidthChange,
   handleQualityChange,
@@ -33,6 +35,20 @@ const Properties = ({
             className="propertiesMenu__content--sizeControl-width"
           />
         </div>
+        <div className="propertiesMenu__content--qualityControl">
+          <p className="propertiesMenu__content--qualityControl-title">
+            Quality:
+          </p>
+          <input
+            value={quality}
+            type="number"
+            max={100}
+            min={0}
+            onChange={handleQualityChange}
+            className="propertiesMenu__content--qualityControl-value"
+          />
+        </div>
+        <div className="propertiesMenu__content--formatControl"></div>
       </div>
     </div>
   );

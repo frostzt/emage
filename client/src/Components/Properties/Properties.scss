@@ -35,5 +35,14 @@
         width: 33.3%;
       }
     }
+
+    &--qualityControl {
+      display: flex;
+      justify-content: space-around;
+
+      &-title {
+        font-size: 1.4rem;
+      }
+    }
   }
 }
