@@ -61,12 +61,10 @@ exports.manipulateImage = async (req, res, next) => {
         .toFile(`./public/images/${req.body.image}`);
     }
 
-    return res
-      .status(200)
-      .json({
-        status: "Done",
-        link: `https://localhost:5000/images/${req.body.image}`,
-      });
+    return res.status(200).json({
+      status: "success",
+      link: `${req.protocol + "://" + req.hostname}/images/${req.body.image}`,
+    });
   } catch (error) {
     return new CreateError(
       "There was some error in processing the image, please try again!",
