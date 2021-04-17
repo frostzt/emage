@@ -63,7 +63,8 @@ exports.manipulateImage = async (req, res, next) => {
 
     return res.status(200).json({
       status: "success",
-      link: `${req.protocol + "://" + req.hostname}/images/${req.body.image}`,
+      // link: `${req.protocol + "://" + req.hostname}/images/${req.body.image}`,
+      link: "https://google.com",
     });
   } catch (error) {
     return new CreateError(
