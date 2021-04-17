@@ -62,6 +62,11 @@ $ npm install
 $ npm run dev
 ```
 
+## Deployed Application
+
+The Application shown in the demo is hosted on [Heroku](https://www.heroku.com/) in a free dyno, in a nutshell any image you host using Emage API will not be kept as permanent and will be deleted as soon as the app restarts or recompiles.
+However images uploaded on Imgur are permanent however you won't be able to access them without the link which is yielded once you upload it. This does not mean the application won't work on production. If you want to use this app just clone it and deploy it on your server or something like AWS and then it will work just normal and the images uploaded using Emage API won't be lost!
+
 ## Acknowledgements
 
 <!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example -->
