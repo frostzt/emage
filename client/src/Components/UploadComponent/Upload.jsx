@@ -148,7 +148,11 @@ const Upload = () => {
 
   return (
     <DropImage handleFileUpload={handleFileUpload}>
-      <div className={`uploadComponent ${isLoading ? "overflow-hidden" : ""}`}>
+      <div
+        className={`uploadComponent ${isLoading ? "overflow-hidden" : ""} ${
+          isUploaded ? "auto-height" : ""
+        }`}
+      >
         {isLoading ? (
           <Loader />
         ) : isUploaded ? (
@@ -177,6 +181,14 @@ const Upload = () => {
             ) : null}
           </Fragment>
         )}
+      </div>
+      <div className="author">
+        <p className="author__desc">
+          Made by{" "}
+          <a className="author__desc--link" href="https://github.com/frostzt">
+            frostzt
+          </a>
+        </p>
       </div>
     </DropImage>
   );

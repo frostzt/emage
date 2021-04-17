@@ -14,3 +14,21 @@
 .overflow-hidden {
   overflow: hidden !important;
 }
+
+.auto-height {
+  height: auto !important;
+}
+
+.author {
+  left: 50%;
+  bottom: 0%;
+  font-size: 1.6rem;
+  position: absolute;
+  transform: translate(-50%, -50%);
+
+  &__desc {
+    &--link {
+      color: var(--primary-color);
+    }
+  }
+}
