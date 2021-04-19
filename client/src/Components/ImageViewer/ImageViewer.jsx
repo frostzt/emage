@@ -1,4 +1,5 @@
 import React from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import { CheckCircleFilled } from "@ant-design/icons";
 
 // Style
@@ -28,7 +29,9 @@ const ImageViewer = ({ data, reset }) => {
           className="imageViewer__input--link"
           value={data.link}
         />
-        <Button classes="imageViewer__input--btn">Copy</Button>
+        <CopyToClipboard text={data.link}>
+          <Button classes="imageViewer__input--btn">Copy</Button>
+        </CopyToClipboard>
       </div>
       <Button onClick={reset} classes="imageViewer__reset">
         Upload another image!
