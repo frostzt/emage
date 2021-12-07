@@ -30,7 +30,7 @@ const Upload = () => {
       if (!isEmage) {
         const config = {
           headers: {
-            Authorization: "Client-ID 482011aecb8fad5",
+            Authorization: `Client-ID ${process.env.REACT_APP_CLIENT_ID}`,
           },
         };
 
